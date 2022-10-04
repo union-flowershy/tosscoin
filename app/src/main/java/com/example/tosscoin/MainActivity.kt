@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
             // 동전을 던지고 난 후의 결과 값
             // 동전이 내려오고 난 후에 결과값을 보여주기 위해 2.2초로 설정
-            Timer().schedule(2200) {
+            Timer().schedule(500) {
                 state = (0..1).random()
 
                 when(state) {
