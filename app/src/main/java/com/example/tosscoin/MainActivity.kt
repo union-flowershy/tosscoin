@@ -18,27 +18,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var tossButton = findViewById(R.id.toss_button) as Button
-        var coinImage = findViewById(R.id.coin_image) as ImageView
+        val tossButton = findViewById<Button>(R.id.toss_button)
+        val coinImage = findViewById<ImageView>(R.id.coin_image)
 
         tossButton.setOnClickListener {
 
-            var animation : Animation = AnimationUtils.loadAnimation(this, R.anim.coin_effect)
+            val animation : Animation = AnimationUtils.loadAnimation(this, R.anim.coin_effect)
             coinImage.startAnimation(animation)
 
             // 동전 사운드
-            var mediaPlayer : MediaPlayer? = MediaPlayer.create(this, R.raw.coin_effect)
+            val mediaPlayer : MediaPlayer? = MediaPlayer.create(this, R.raw.coin_effect)
             mediaPlayer?.start()
 
             // 동전을 던지고 난 후의 결과 값
             // 동전이 내려오고 난 후에 결과값을 보여주기 위해 2.2초로 설정
-            Timer().schedule(700) {
+            Timer().schedule(2200) {
                 state = (0..1).random()
 
                 when(state) {
                     0 -> coinImage.setImageResource(R.drawable.coin_back)
                     1 -> coinImage.setImageResource(R.drawable.coin_front)
-                    else -> "else"
                 }
 
             }
